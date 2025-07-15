@@ -1,1 +1,1 @@
-export { GET as default } from '@/shared/api/routes/bars';
+export { GET } from '@/shared/api/routes/bars';
