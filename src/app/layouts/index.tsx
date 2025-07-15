@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Eisenhower Matrix - Online App',
-  description: 'Organize your priorities and workload',
+  title: 'Berlin Bars',
+  description: '',
 };
 
 export async function RootLayout({
