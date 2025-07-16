@@ -1,38 +1,37 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import '../styles';
-
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+import type { Metadata } from "next";
+import "@fontsource/source-sans-pro";
+import "@/shared/theme/index.css";
+import { Suspense } from "react";
+import { fallbackLng, languages } from "@/shared/configs/i18n/settings";
 
 export const metadata: Metadata = {
-  title: 'Berlin Bars',
-  description: '',
+  title: "Berlin Bars",
+  description: "",
 };
+
+export async function generateStaticParams() {
+  return languages
+    .filter(lng => lng !== fallbackLng)
+    .map(lng => ({ lng }));
+}
 
 export async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-
   return (
-    <html
-      lang="en"
-    >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} relative antialiased`}
-      >
-        {children}
+    <html lang="en">
+      <body className={`relative antialiased`}>
+        <Suspense
+          fallback={
+            <div style={{ padding: 32, textAlign: "center" }}>
+              Loading page...
+            </div>
+          }
+        >
+          {children}
+        </Suspense>
       </body>
     </html>
   );

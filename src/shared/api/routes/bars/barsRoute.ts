@@ -5,9 +5,10 @@ const prisma = new PrismaClient();
 
 export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const neighborhood = searchParams.get('neighborhood');
+  const neighborhoods = searchParams.getAll('neighborhood');
+  const where = neighborhoods.length > 0 ? { neighborhood: { in: neighborhoods } } : undefined;
   const bars = await prisma.barsData.findMany({
-    where: neighborhood ? { neighborhood } : undefined,
+    where,
     select: { id: true, title: true, description: true, imageUrl: true, neighborhood: true }
   });
 

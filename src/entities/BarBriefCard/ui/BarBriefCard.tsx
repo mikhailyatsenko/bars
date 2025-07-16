@@ -2,8 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './BarBriefCard.module.css';
 import { BarBriefCardProps } from '../types';
+import { getT } from '@/shared/configs/i18n';
 
-export const BarBriefCard: React.FC<BarBriefCardProps> = ({ title, description, imageUrl, onDetailsClick }) => {
+export const BarBriefCard: React.FC<BarBriefCardProps> = async ({ title, description, imageUrl, onDetailsClick }) => {
+  const { t } = await getT(['common'])
+
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -20,7 +23,7 @@ export const BarBriefCard: React.FC<BarBriefCardProps> = ({ title, description, 
         <h3 className={styles.title}>{title}</h3>
         {description && <p className={styles.description}>{description}</p>}
         <button className={styles.detailsButton} onClick={onDetailsClick} type="button">
-          Подробнее
+       {t('readMore')}
         </button>
       </div>
     </div>

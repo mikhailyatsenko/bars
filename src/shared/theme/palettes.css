@@ -1,0 +1,77 @@
+:root {
+  --blue-950: #1a2233;
+  --blue-900: #22304a;
+  --blue-800: #2a3e61;
+  --blue-700: #33507a;
+  --blue-600: #3d6393;
+  --blue-500: #4a7aa8;
+  --blue-400: #5e93be;
+  --blue-300: #7baed2;
+  --blue-200: #a2c7e3;
+  --blue-100: #cfe2f2;
+  --blue-50: #f2f7fa;
+
+  --beige-950: #3a3530;
+  --beige-900: #4d463e;
+  --beige-800: #6a6357;
+  --beige-700: #8a8376;
+  --beige-600: #a79f93;
+  --beige-500: #c3bab0;
+  --beige-400: #d7d0c8;
+  --beige-300: #e7e3de;
+  --beige-200: #f2f0ed;
+  --beige-100: #f8f7f5;
+  --beige-50: #fcfbfa;
+
+  --green-950: #1d3324;
+  --green-900: #25412d;
+  --green-800: #2e5137;
+  --green-700: #386241;
+  --green-600: #43734c;
+  --green-500: #5a8c62;
+  --green-400: #7ba985;
+  --green-300: #a2c7ad;
+  --green-200: #cfe5d6;
+  --green-100: #eaf5ee;
+  --green-50: #f6fbf8;
+
+  --gray-950: #181a1b;
+  --gray-900: #232526;
+  --gray-800: #353738;
+  --gray-700: #4a4c4d;
+  --gray-600: #6a6c6d;
+  --gray-500: #8c8e8f;
+  --gray-400: #b0b1b2;
+  --gray-300: #d1d2d3;
+  --gray-200: #e6e7e8;
+  --gray-100: #f2f3f4;
+  --gray-50: #fafbfc;
+
+  --black: #000;
+  --white: #fff;
+
+  /* main colors */
+  --c-brand: var(--blue-900);
+  --c-primary: var(--blue-900);
+  --c-primary-hover: var(--blue-800);
+  --c-primary-active: var(--blue-950);
+  --c-secondary: var(--beige-900);
+  --c-secondary-hover: var(--beige-800);
+  --c-secondary-active: var(--beige-950);
+  --c-content-1: var(--gray-950);
+  --c-content-2: var(--gray-600);
+  --c-content-3: var(--gray-500);
+  --c-transparent-1: hsl(from var(--gray-600) h s l / 10%);
+  --c-transparent-2: hsl(from var(--gray-600) h s l / 18%);
+  --c-transparent-3: hsl(from var(--gray-600) h s l / 26%);
+  --c-border-1: var(--gray-200);
+  --c-border-2: var(--gray-400);
+  --c-border-3: var(--gray-500);
+  --c-border-active: var(--blue-900);
+  --c-background-1: var(--white);
+  --c-background-2: var(--gray-50);
+  --c-background-3: var(--gray-100);
+  --c-success: var(--green-700);
+  --c-error: #c94f4f;
+  --c-gradient: linear-gradient(90deg, #e6e7e8 0%, #a2c7e3 100%);
+}
