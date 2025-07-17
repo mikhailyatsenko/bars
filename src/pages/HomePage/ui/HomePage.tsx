@@ -1,5 +1,6 @@
 import BarsCatalog, { getAllNeighborhoods } from "@/features/BarsCatalog/ui/BarsCatalog";
 import { LanguageSwitcher } from "@/shared/components/LanguageSwitcher";
+import { ThemeSwitcher } from "@/shared/components/ThemeSwitcher";
 import { Suspense } from "react";
 
 interface HomePageProps {
@@ -15,7 +16,10 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
 
   return (
     <main>
-      <LanguageSwitcher/>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+        <LanguageSwitcher/>
+        <ThemeSwitcher/>
+      </div>
       <form id="neighborhood-form" method="get" style={{ marginBottom: 24, padding: 12, border: '1px solid #eee', borderRadius: 8, maxWidth: 400 }}>
         <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
           <legend style={{ fontWeight: 600, marginBottom: 8 }}>Районы</legend>

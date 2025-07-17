@@ -1,13 +1,5 @@
 'use client';
-import { createTheme } from '@mui/material/styles';
+import lightTheme from './lightTheme';
+import darkTheme from './darkTheme';
 
-const theme = createTheme({
-  typography: {
-    fontFamily: 'Source Sans Pro'
-  },
-  palette: {
-  },
-  cssVariables: true,
-});
-
-export default theme;
+export { lightTheme, darkTheme };
