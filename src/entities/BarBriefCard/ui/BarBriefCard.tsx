@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './BarBriefCard.module.css';
 import { BarBriefCardProps } from '../types';
 import { getT } from '@/shared/configs/i18n';
+import Button from '@mui/material/Button';
 
 export const BarBriefCard: React.FC<BarBriefCardProps> = async ({ title, description, imageUrl, onDetailsClick }) => {
   const { t } = await getT(['common'])
@@ -22,9 +23,9 @@ export const BarBriefCard: React.FC<BarBriefCardProps> = async ({ title, descrip
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         {description && <p className={styles.description}>{description}</p>}
-        <button className={styles.detailsButton} onClick={onDetailsClick} type="button">
+        <Button variant='contained' onClick={onDetailsClick} type="button">
        {t('readMore')}
-        </button>
+        </Button>
       </div>
     </div>
   );
