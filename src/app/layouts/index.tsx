@@ -1,7 +1,11 @@
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '@/shared/theme';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import "@fontsource/source-sans-pro";
 import "@/shared/theme/index.css";
-import { Suspense } from "react";
 import { fallbackLng, languages } from "@/shared/configs/i18n/settings";
 
 export const metadata: Metadata = {
@@ -10,28 +14,29 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return languages
-    .filter(lng => lng !== fallbackLng)
-    .map(lng => ({ lng }));
+  return languages.filter((lng) => lng !== fallbackLng).map((lng) => ({ lng }));
 }
 
-export async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en">
-      <body className={`relative antialiased`}>
-        <Suspense
-          fallback={
-            <div style={{ padding: 32, textAlign: "center" }}>
-              Loading page...
-            </div>
-          }
-        >
-          {children}
-        </Suspense>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <InitColorSchemeScript attribute="data" />
+      </head>
+      <body className="relative antialiased">
+        <ThemeProvider theme={theme} defaultMode="system">
+          <AppRouterCacheProvider options={{ key: "css" }}>
+            <Suspense
+              fallback={
+                <div style={{ padding: 32, textAlign: "center" }}>
+                  Loading page...
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
+          </AppRouterCacheProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

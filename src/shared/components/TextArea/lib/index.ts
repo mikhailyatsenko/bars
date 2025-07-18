@@ -1,1 +1,0 @@
-export { updateHeight } from './updateHeight';

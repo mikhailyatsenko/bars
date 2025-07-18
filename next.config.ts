@@ -2,7 +2,20 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["lh3.googleusercontent.com", "streetviewpixels-pa.googleapis.com", "photos.hotelbeds.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "streetviewpixels-pa.googleapis.com",
+      },
+      {
+        protocol: "https",
+        hostname: "photos.hotelbeds.com",
+      },
+    ],
   },
 };
 
