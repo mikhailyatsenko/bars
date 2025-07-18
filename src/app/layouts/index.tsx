@@ -5,8 +5,9 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import "@fontsource/source-sans-pro";
-import "@/shared/theme/index.css";
+
 import { fallbackLng, languages } from "@/shared/configs/i18n/settings";
+import CssBaseline from '@mui/material/CssBaseline';
 
 export const metadata: Metadata = {
   title: "Berlin Bars",
@@ -25,6 +26,7 @@ export function RootLayout({ children }: Readonly<{ children: React.ReactNode; }
       </head>
       <body className="relative antialiased">
         <ThemeProvider theme={theme} defaultMode="system">
+        <CssBaseline />
           <AppRouterCacheProvider options={{ key: "css" }}>
             <Suspense
               fallback={
