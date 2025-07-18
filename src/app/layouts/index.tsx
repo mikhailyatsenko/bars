@@ -1,9 +1,12 @@
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '@/shared/theme';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import "@fontsource/source-sans-pro";
 import "@/shared/theme/index.css";
-import { Suspense } from "react";
 import { fallbackLng, languages } from "@/shared/configs/i18n/settings";
-import { ThemeProviderWithContext } from "@/shared/components/ThemeProviderWithContext";
 
 export const metadata: Metadata = {
   title: "Berlin Bars",
@@ -14,25 +17,26 @@ export async function generateStaticParams() {
   return languages.filter((lng) => lng !== fallbackLng).map((lng) => ({ lng }));
 }
 
-export function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <InitColorSchemeScript attribute="data" />
+      </head>
       <body className="relative antialiased">
-        <ThemeProviderWithContext>
-          <Suspense
-            fallback={
-              <div style={{ padding: 32, textAlign: "center" }}>
-                Loading page...
-              </div>
-            }
-          >
-            {children}
-          </Suspense>
-        </ThemeProviderWithContext>
+        <ThemeProvider theme={theme} defaultMode="system">
+          <AppRouterCacheProvider options={{ key: "css" }}>
+            <Suspense
+              fallback={
+                <div style={{ padding: 32, textAlign: "center" }}>
+                  Loading page...
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
+          </AppRouterCacheProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
