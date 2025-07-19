@@ -8,7 +8,7 @@ export function ThemeSwitcher() {
   const { mode, setMode } = useColorScheme();
 
   const toggleTheme = () => setMode(mode === "light" ? "dark" : "light");
-
+  if (!mode) return null;
   return (
     <IconButton onClick={toggleTheme} color="inherit" aria-label="Переключить тему">
       {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}

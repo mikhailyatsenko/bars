@@ -1,0 +1,1 @@
+export { barsCatalogRoute as GET } from '@/shared/api/routes';

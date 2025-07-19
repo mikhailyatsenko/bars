@@ -1,1 +1,0 @@
-export { GET } from '@/shared/api/routes/bars';
