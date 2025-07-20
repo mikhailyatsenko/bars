@@ -4,10 +4,12 @@ import i18next from './i18next'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { fallbackLng } from './settings';
 
 export function useT(ns: string | string[], options?: object) {
-  const lng = useParams()?.lng;
-  if (typeof lng !== 'string') throw new Error('useT is only available inside /app/[lng]');
+  const params = useParams();
+  const lng = typeof params?.lng === 'string' ? params.lng : fallbackLng;
+
 
   const [activeLng, setActiveLng] = useState(i18next.resolvedLanguage);
 
