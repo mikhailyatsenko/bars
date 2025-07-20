@@ -1,12 +1,12 @@
 import BarBriefCard from "@/entities/BarBriefCard/ui/BarBriefCard";
-import { getBars, Bar } from "../lib/getBars";
+import { getBars, Bar } from "../api/getBars";
 import styles from "./BarsCatalog.module.css";
 
 export interface BarsCatalogProps {
   neighborhoods?: string[];
 }
 
-export default async function BarsCatalog({ neighborhoods = [] }: BarsCatalogProps) {
+export default async function BarsCatalog({ neighborhoods }: BarsCatalogProps) {
   const bars = await getBars(neighborhoods);
   return (
     <ul className={styles.BarsCatalog}>
@@ -23,7 +23,4 @@ export default async function BarsCatalog({ neighborhoods = [] }: BarsCatalogPro
   );
 }
 
-export async function getAllNeighborhoods(): Promise<string[]> {
-  const bars = await getBars();
-  return Array.from(new Set(bars.map(b => b.neighborhood).filter((n): n is string => Boolean(n))));
-}
+

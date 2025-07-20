@@ -1,0 +1,1 @@
+export { neighborhoodsRoute as GET } from '@/shared/api/routes';

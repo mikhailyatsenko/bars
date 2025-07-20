@@ -1,11 +1,11 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@/shared/generated/prisma';
 
 const prisma = new PrismaClient();
 
-export const GET = async (req: NextRequest) => {
+export const barsCatalogRoute = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
-  const neighborhoods = searchParams.getAll('neighborhood');
+  const neighborhoods = searchParams.getAll("neighborhoods");
   const where = neighborhoods.length > 0 ? { neighborhood: { in: neighborhoods } } : undefined;
   const bars = await prisma.barsData.findMany({
     where,

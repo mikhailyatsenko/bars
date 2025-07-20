@@ -1,0 +1,1 @@
+export { barsCatalogRoute } from "./barsCatalogRoute"
