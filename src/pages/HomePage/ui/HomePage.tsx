@@ -1,6 +1,6 @@
 import BarsCatalog from "@/features/BarsCatalog/ui/BarsCatalog";
-import { NeighborhoodFilter } from "@/features/FilterNeighborhoods";
-// import NeighborhoodFilter from "@/features/BarsCatalog/ui/NeighborhoodFilter";
+import { FilterNeighborhoods } from "@/features/FilterNeighborhoods";
+// import FilterNeighborhoods from "@/features/BarsCatalog/ui/FilterNeighborhoods";
 import { LanguageSwitcher } from "@/shared/components/LanguageSwitcher";
 import { ThemeSwitcher } from "@/shared/components/ThemeSwitcher";
 import { getAllNeighborhoods } from "../api/getAllNeighborhoods";
@@ -9,7 +9,7 @@ interface HomePageProps {
   searchParams: Promise<{ neighborhoods?: string }>;
 }
 
-const HomePage = async ({ searchParams }: HomePageProps) => {
+export const HomePage = async ({ searchParams }: HomePageProps) => {
   const params = await searchParams;
   const selectedNeighborhoods = params.neighborhoods
     ? params.neighborhoods.split(",").filter(Boolean)
@@ -30,7 +30,7 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
         <LanguageSwitcher />
         <ThemeSwitcher />
       </div>
-      <NeighborhoodFilter
+      <FilterNeighborhoods
         allNeighborhoods={neighborhoods}
         searchParams={params}
       />
@@ -40,4 +40,3 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
   );
 };
 
-export default HomePage;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { NeighborhoodFilterProps } from "../types";
+import { FilterNeighborhoodsProps } from "../types";
 import { MultiSelect } from "@/shared/components/MultiSelect";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -13,10 +13,10 @@ import {
 import { Box, Button } from "@mui/material";
 import { useT } from "@/shared/configs/i18n/client";
 
-export const NeighborhoodFilter = ({
+export const FilterNeighborhoods = ({
   searchParams,
   allNeighborhoods,
-}: NeighborhoodFilterProps) => {
+}: FilterNeighborhoodsProps) => {
   const {t} = useT(["common"]);
 
   const router = useRouter();

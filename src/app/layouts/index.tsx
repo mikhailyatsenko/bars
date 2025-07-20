@@ -8,6 +8,7 @@ import "@fontsource/source-sans-pro";
 
 import { fallbackLng, languages } from "@/shared/configs/i18n/settings";
 import CssBaseline from '@mui/material/CssBaseline';
+import { Navbar } from '@/widgets/Navbar';
 
 export const metadata: Metadata = {
   title: "Berlin Bars",
@@ -35,6 +36,7 @@ export function RootLayout({ children }: Readonly<{ children: React.ReactNode; }
                 </div>
               }
             >
+              <Navbar/>
               {children}
             </Suspense>
           </AppRouterCacheProvider>

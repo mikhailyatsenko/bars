@@ -1,1 +1,1 @@
-export { NeighborhoodFilter } from './FilterNeighborhoods'
+export { FilterNeighborhoods } from './FilterNeighborhoods'
